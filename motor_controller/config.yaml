@@ -8,5 +8,5 @@ steering:
 throttle:
   negative_gain: 0.12
   positive_gain: 0.06
-  negative_offset: -0.17
-  positive_offset: 0.12
+  negative_offset: -0.15
+  positive_offset: 0.2

@@ -1,5 +1,5 @@
 import zmq
-from motor_controller import MotorController, MotorCommand, InvalidCommandValue
+from .motor_controller import MotorController, MotorCommand, InvalidCommandValue
 
 class ZmqReceiver:
     def __init__(self, motor_controller: MotorController, address="tcp://localhost:5555",
@@ -14,14 +14,13 @@ class ZmqReceiver:
         self.error = False
     
     def run_command(self, cmd: str):
-        if cmd == "CLEAR_ERROR":
+        if cmd == "RESET_ERROR":
             self.error = False
-            print("Error cleared!")
         
     def run(self):
         while True:
             _ = self.socket.recv_string()
-            packet = self.socket.recv_pyobj()
+            packet = self.socket.recv_pyobj()[1]
 
             if "cmd" in packet.keys():
                 self.run_command(packet["cmd"])

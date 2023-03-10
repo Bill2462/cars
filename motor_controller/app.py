@@ -1,5 +1,5 @@
 import yaml
-from motor_controller import ZmqReceiver, MotorController
+from app import ZmqReceiver, MotorController
 
 def load_config_file(filepath: str) -> dict:
     with open(filepath, "r") as f:
