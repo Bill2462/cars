@@ -1,0 +1,2 @@
+address: "tcp://*:5556"
+delay: 1.0
