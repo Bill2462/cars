@@ -1,0 +1,4 @@
+motor_command_address: "tcp://localhost:5555"
+system_telemetry_address: "tcp://localhost:5556"
+user_telemetry_address: "tcp://localhost:5557"
+user_telemetry_img_address: "tcp://localhost:5558"
