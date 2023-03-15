@@ -2,6 +2,7 @@ import yaml
 import threading
 import zmq
 import json
+import sys
 from PIL import Image
 from io import BytesIO
 from flask import Flask, request, send_file
@@ -54,7 +55,8 @@ def form_json_response(input):
 
     return {"timestamp": input[0], "data": input[1]}
 
-cfg = load_config_file("config.yaml")
+config_filepath = sys.argv[1]
+cfg = load_config_file(config_filepath)
 
 motor_command_receiver = TelemetryReceiver(cfg["motor_command_address"])
 system_telemetry_receiver = TelemetryReceiver(cfg["system_telemetry_address"])
