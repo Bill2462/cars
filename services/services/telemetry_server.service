@@ -1,0 +1,11 @@
+[Unit]
+Description=Telemetry server.
+After=multi-user.target
+
+[Service]
+WorkingDirectory = /home/jetson/services/telemetry_server
+ExecStart=/usr/bin/env gunicorn app:app -b 0.0.0.0:8000
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Motor controller service.
+After=multi-user.target
+
+[Service]
+WorkingDirectory = /home/jetson/services/motor_controller
+ExecStart=/usr/bin/python3 app.py config.yaml
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

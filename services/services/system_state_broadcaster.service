@@ -1,0 +1,11 @@
+[Unit]
+Description=System state broadcaster service.
+After=multi-user.target
+
+[Service]
+WorkingDirectory = /home/jetson/services/system_state_broadcaster
+ExecStart=/usr/bin/python3 app.py config.yaml
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
