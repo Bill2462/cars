@@ -22,8 +22,8 @@ def get_image_or_panic(address):
 def get_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("name", type=str,
-                        help="Name of the image stream.")
+    parser.add_argument("topic", type=str,
+                        help="Name of the image topic to subscribe to.")
 
     parser.add_argument("--ip", type=str, default="10.128.168.100",
                         help="IP of the server.")
@@ -41,7 +41,7 @@ def get_args():
 
 def main():
     args = get_args()
-    api = f"http://{args.ip}:{args.port}/{args.endpoint}?name={args.name}"
+    api = f"http://{args.ip}:{args.port}/{args.endpoint}?name={args.topic}"
     period = 1 / args.refresh_rate
 
     image = get_image_or_panic(api)
