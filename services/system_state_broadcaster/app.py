@@ -1,4 +1,5 @@
 import yaml
+import sys
 from app.broadcaster import ValueBroadcaster
 from app.ina219 import INA219
 from app.jetson_status import *
@@ -15,7 +16,8 @@ class BatteryBroadcaster:
         return self.ina.getBusVoltage_V()
 
 def main():
-    cfg = load_config_file("config.yaml")
+    config_filepath = sys.argv[1]
+    config = load_config_file(config_filepath)
 
     broadcaster = ValueBroadcaster((
         ("battery_voltage", BatteryBroadcaster()),
@@ -25,7 +27,7 @@ def main():
         ("power_usage", power_usage),
         ("memory_usage", memory_usage),
         ("disk_usage", disk_usage)),
-        cfg["address"], cfg["delay"])
+        config["address"], config["delay"])
 
     broadcaster.run()
 
