@@ -95,75 +95,9 @@ Then type in `nmcli device widi connect  "<ssid_name>" password "<password>"`
 
 ## Preparing card image from scratch
 
+Copy `setup.bash` on the device.
+
 This section assumes that clean image is installed on the microSD card (from setting up the board for SD card boot).
 
-First boot the jetson and connect keyboard and mouse to it. It is then recommended to change power limit to MAXN. So this step does not proceed really slowly.
+First boot the jetson and connect keyboard and mouse to it. It is then recommended to change power limit to MAXN. So this step does not take a lot of time.
 Then please connect board to wifi or to ethernet network with access to internet.
-
-Now we will update and clean up the system and install necessary packages.
-
-First we install necessary system updates:
-
-```
-sudo apt update && sudo apt upgrade -y
-```
-
-Then we remove unnecessary and bulky packages:
-
-```
-sudo apt purge libreoffice-* -y
-sudo apt purge thunderbird chromium-browser rhythmbox -y
-sudo apt autoremove -y
-```
-
-Then we install all necessary packages from apt:
-
-```
-sudo apt install nvidia-jetpack htop nano python3-pip git cmake libpython3-dev python3-numpy libzmq3-dev -y
-```
-
-Then we install necessary packges from PIP:
-
-```
-sudo -H pip3 install jetson-stats
-sudo -H pip3 install setuptools-scm==6.0.1
-sudo -H pip3 install adafruit-circuitpython-servokit==1.3.8
-sudo -H pip3 install Adafruit-SSD1306
-sudo -H pip3 install packaging
-sudo -H pip3 install --no-binary=:all: pyzmq
-```
-
-Then we built jetson-inference package:
-
-```
-git clone --recursive https://github.com/dusty-nv/jetson-inference
-cd jetson-inference
-mkdir build
-cd build
-cmake ..
-make -j$(nproc)
-sudo make install
-sudo ldconfig
-```
-
-Please unselect all models during prompt that will popup when running cmake ... And then skip pytorch installation. We will do all training on a different computer.
-
-Then we clean some space on the harddrive:
-
-```
-sudo apt clean
-sudo rm -rf *
-```
-
-Now we disable docker and containerd services.
-
-```
-sudo systemctl disable docker
-sudo systemctl disable containerd
-```
-
-To disable desktop we run:
-
-```
-sudo systemctl set-default multi-user
-```
