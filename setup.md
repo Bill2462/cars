@@ -95,9 +95,25 @@ Then type in `nmcli device widi connect  "<ssid_name>" password "<password>"`
 
 ## Preparing card image from scratch
 
-Copy `setup.bash` on the device.
-
 This section assumes that clean image is installed on the microSD card (from setting up the board for SD card boot).
 
 First boot the jetson and connect keyboard and mouse to it. It is then recommended to change power limit to MAXN. So this step does not take a lot of time.
 Then please connect board to wifi or to ethernet network with access to internet.
+
+Then copy `setup.bash` on the device.
+
+Finally execute the `setup.bash` by running `bash setup.bash` command.
+
+Then remove all files from the home directory using `rm -r *` command.
+
+Then copy `packages/` and `services/` and `examples/` to the home folder.
+
+Then copy service files to the `/etc/systemd/system/` using the following command: `sudo cp services/* /etc/systemd/system/`.
+
+Finally enable the necessary services:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable telemetry_server.service
+sudo systemctl enable system_state_broadcaster.service
+```
