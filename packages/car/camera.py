@@ -1,7 +1,7 @@
 import cv2
 
 class CSICamera:
-    def __init__(self, capture_fps, capture_width, capture_height, width, height):
+    def __init__(self, capture_fps=21, capture_width=1280, capture_height=720, width=1280, height=720):
         try:
             self.capture_fps = capture_fps
             self.capture_width = capture_width
