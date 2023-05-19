@@ -1,7 +1,7 @@
 from .pub import ZmqPublisher
 from .misc import time_ms
 
-class Telemetry:
+class TelemetrySender:
     def __init__(self, address_regular="tcp://*:5557",
                  address_img="tcp://*:5558"):
         self.pub = ZmqPublisher(address_regular)
