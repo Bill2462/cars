@@ -15,7 +15,7 @@ sudo -H pip3 install adafruit-circuitpython-servokit==1.3.8
 sudo -H pip3 install Adafruit-SSD1306
 sudo -H pip3 install packaging
 sudo -H pip3 install --no-binary=:all: pyzmq
-sudo -H pip3 install flask
+sudo -H pip3 install flask pygamepad
 
 # Remove unnecessary packages
 sudo apt clean
