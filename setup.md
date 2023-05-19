@@ -91,7 +91,7 @@ Then we connect camera and keyboard to the jetson and we login (user: jetson, pa
 
 Then we edit the file with new hostname.
 
-Then type in `nmcli device widi connect  "<ssid_name>" password "<password>"`
+Then type in `nmcli device wifi connect  "<ssid_name>" password "<password>"`
 
 ## Preparing card image from scratch
 
