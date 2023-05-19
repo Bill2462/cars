@@ -10,10 +10,10 @@ def get_args():
     parser.add_argument("camera_parameters_filepath", type=str,
                         help="Path to camera parameters file.")
 
-    parser.add_argument("--uncorrected_img_topic", type=str, default="imguncorrected",
+    parser.add_argument("--uncorrected_img_topic", type=str, default="img_uncorrected",
                         help="Uncorrected image topic.")
 
-    parser.add_argument("--corrected_img_topic", type=str, default="img",
+    parser.add_argument("--corrected_img_topic", type=str, default="img_corrected",
                         help="Corrected image topic.")
 
     return parser.parse_args()
