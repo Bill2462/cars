@@ -1,7 +1,7 @@
 import argparse
 import numpy as np
 from car.camera import CSICamera, load_camera_parameters
-from car.telemetry import Telemetry
+from car.telemetry import TelemetrySender
 import vpi # Has to be imported after opencv (import last just to be save).
 
 def get_args():
@@ -10,10 +10,10 @@ def get_args():
     parser.add_argument("camera_parameters_filepath", type=str,
                         help="Path to camera parameters file.")
 
-    parser.add_argument("--uncorrected_img_topic", type=str, default="img",
+    parser.add_argument("--uncorrected_img_topic", type=str, default="imguncorrected",
                         help="Uncorrected image topic.")
 
-    parser.add_argument("--corrected_img_topic", type=str, default="img_uncorrected",
+    parser.add_argument("--corrected_img_topic", type=str, default="img",
                         help="Corrected image topic.")
 
     return parser.parse_args()
@@ -22,7 +22,7 @@ def main():
     args = get_args()
 
     cam = CSICamera()
-    telemetry = Telemetry()
+    telemetry = TelemetrySender()
 
     cam_matrix, dist_coeff = load_camera_parameters(args.camera_parameters_filepath)
 
