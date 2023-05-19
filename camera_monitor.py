@@ -8,6 +8,7 @@ from PIL import Image
 
 def check_if_enter_pressed():
     if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
+        sys.stdin.read(1)
         return True
     return False
 
