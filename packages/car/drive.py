@@ -1,79 +1,65 @@
-import time
 from adafruit_servokit import ServoKit
+from time import sleep
+import traitlets
 
-class DriveController:
-    def __init__(self,
-                 steering_gain = 1.0,
-                 steering_offset = 0.0,
-                 throttle_negative_gain = 0.12,
-                 throttle_positive_gain = 0.04,
-                 throttle_negative_offset = -0.15,
-                 throttle_positive_offset = 0.2,
-                 dummy=True):
+class Racecar(traitlets.HasTraits):
+    steering = traitlets.Float()
+    throttle = traitlets.Float()
 
-        if not dummy:
-            self.kit = ServoKit(channels=16, address=0x40)
-            self.steering_motor = self.kit.continuous_servo[0]
-            self.throttle_motor = self.kit.continuous_servo[1]
-
-        self.steering_gain = steering_gain
-        self.steering_offset = steering_offset
-
-        self.throttle_negative_gain = throttle_negative_gain
-        self.throttle_positive_gain = throttle_positive_gain
-        self.throttle_negative_offset = throttle_negative_offset
-        self.throttle_positive_offset = throttle_positive_offset
-        self.dummy = dummy
-
-    def drive(self, throttle: float, steering: float, duration: float):
-        def cap(value, min, max):
-            if value < min:
-                return min
-            if value > max:
-                return max
-            return value
-
-        throttle = cap(throttle, -1, 1)
-        steering - cap(steering, -1, 1)
-
-        if self.dummy:
-            print(f"Throttle: {throttle}    steering: {steering}")
+    @traitlets.validate('steering')
+    def _clip_steering(self, proposal):
+        if proposal['value'] > 1.0:
+            return 1.0
+        elif proposal['value'] < -1.0:
+            return -1.0
         else:
-            self.set_steering(steering)
-            self.set_throttle(throttle)
+            return proposal['value']
 
-        time.sleep(duration)
-
-    def set_steering(self, value: float):
-        self.steering_motor.throttle = self.steering_gain*value + self.steering_offset
-
-    def set_throttle(self, value: float):
-        if value < 0:
-            offset = self.throttle_negative_offset
-            gain = self.throttle_negative_gain
+    @traitlets.validate('throttle')
+    def _clip_throttle(self, proposal):
+        if proposal['value'] > 1.0:
+            return 1.0
+        elif proposal['value'] < -1.0:
+            return -1.0
         else:
-            offset = self.throttle_positive_offset
-            gain = self.throttle_positive_gain
+            return proposal['value']
 
-        # Fucking magic to unlock driving backwards.
-        # It does not work without this magic sequence xd.
+class NvidiaRacecar(Racecar):
+    i2c_address = traitlets.Integer(default_value=0x40)
+    steering_gain = traitlets.Float(default_value=-0.65)
+    steering_offset = traitlets.Float(default_value=0)
+    steering_channel = traitlets.Integer(default_value=0)
+    throttle_gain = traitlets.Float(default_value=0.8)
+    throttle_channel = traitlets.Integer(default_value=1)
+
+    def __init__(self, *args, **kwargs):
+        super(NvidiaRacecar, self).__init__(*args, **kwargs)
+        self.kit = ServoKit(channels=16, address=self.i2c_address)
+        self.steering_motor = self.kit.continuous_servo[self.steering_channel]
+        self.throttle_motor = self.kit.continuous_servo[self.throttle_channel]
+
+        self.last_motor_value = 1
+
+    def stop(self):
+        self.steering = 0.0
+        self.throttle = 0.0
+
+    @traitlets.observe('steering')
+    def _on_steering(self, change):
+        self.steering_motor.throttle = change['new'] * self.steering_gain + self.steering_offset
+
+    @traitlets.observe('throttle')
+    def _on_throttle(self, change):
+
+        # Sequence to enable driving backwards (Why is this needed  WTF is this drive controller?)
         sign = lambda x: (1, -1)[x<=0]
-        if sign(value) == -1 and sign(self.current_steering_motor) > 0:
-            self.throttle_motor.throttle = 0
-            time.sleep(0.2)
+        if sign(change['new']) == -1 and sign(self.last_motor_value) == 1:
+            self.throttle_motor.throttle = 0.0
+            sleep(0.2)
             self.throttle_motor.throttle = -0.3
-            time.sleep(0.2)
-            self.throttle_motor.throttle = 0
-            time.sleep(0.2)
+            sleep(0.2)
+            self.throttle_motor.throttle = 0.0
+            sleep(0.2)
 
-
-        if value < 0.0001 and value > -0.001:
-            new_value = 0
-        else:
-            new_value = value*gain + offset
-        
-        self.throttle_motor.throttle = new_value
-        self.current_steering_motor = new_value
-    
-    def stop_car(self):
-        self.drive(0, 0, 0.01)
+        self.throttle_motor.throttle = change['new'] * self.throttle_gain
+        self.last_motor_value = change['new']

@@ -1,16 +1,24 @@
-from car import drive
+from car.drive import NvidiaRacecar
 from time import sleep
 
+drive = NvidiaRacecar()
+
 def main():
-    drive_controller = drive.DriveController()
-    print("Ready!")
-    
-    drive_controller.drive(0.1, 0.0, 0.5)
-    drive_controller.stop_car()
+    drive.steering = 1.0
     sleep(1)
-    drive_controller.drive(-1.0, 0.0, 0.5)
-    drive_controller.stop_car()
+    drive.steering = -1.0
     sleep(1)
+    drive.steering = 0.0
+
+    drive.throttle = 0.2
+
+    sleep(0.5)
+    drive.throttle = -0.2
+    sleep(0.5)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as _:
+        drive.stop()
+    drive.stop()
