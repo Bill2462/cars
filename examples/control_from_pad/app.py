@@ -8,14 +8,16 @@ def main():
     print("Ready!")
     gamepad.listen()
 
+    car.steering_offset = 0.1
+
     while True:
-        dpad_x = -float(gamepad.buttons.ABS_HAT0X.value)
+        dpad_x = float(gamepad.buttons.ABS_HAT0X.value)
         dpad_y = -float(gamepad.buttons.ABS_HAT0Y.value)
 
         print("D-pad axes: ({}, {})".format(dpad_x, dpad_y))
 
         if dpad_y > 0:
-            dpad_y = 0.3
+            dpad_y = 0.25
         if dpad_y < 0:
             dpad_y = -0.3
 

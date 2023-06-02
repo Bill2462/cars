@@ -1,7 +1,7 @@
-from car.drive import NvidiaRacecar
+from car.drive import Car
 from time import sleep
 
-drive = NvidiaRacecar()
+drive = Car()
 
 def main():
     drive.steering = 1.0

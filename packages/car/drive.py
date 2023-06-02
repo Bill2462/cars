@@ -24,7 +24,7 @@ class Racecar(traitlets.HasTraits):
         else:
             return proposal['value']
 
-class NvidiaRacecar(Racecar):
+class Car(Racecar):
     i2c_address = traitlets.Integer(default_value=0x40)
     steering_gain = traitlets.Float(default_value=-0.65)
     steering_offset = traitlets.Float(default_value=0)
@@ -33,7 +33,7 @@ class NvidiaRacecar(Racecar):
     throttle_channel = traitlets.Integer(default_value=1)
 
     def __init__(self, *args, **kwargs):
-        super(NvidiaRacecar, self).__init__(*args, **kwargs)
+        super(Car, self).__init__(*args, **kwargs)
         self.kit = ServoKit(channels=16, address=self.i2c_address)
         self.steering_motor = self.kit.continuous_servo[self.steering_channel]
         self.throttle_motor = self.kit.continuous_servo[self.throttle_channel]
