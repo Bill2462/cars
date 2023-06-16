@@ -1,24 +1,25 @@
 from car.drive import Car
 from time import sleep
 
-drive = Car()
+drive_controller = Car()
 
 def main():
-    drive.steering = 1.0
+    drive_controller.steering = 1.0
     sleep(1)
-    drive.steering = -1.0
+    drive_controller.steering = -1.0
     sleep(1)
-    drive.steering = 0.0
+    drive_controller.steering = 0.0
 
-    drive.throttle = 0.2
+    drive_controller.throttle = 0.2
 
     sleep(0.5)
-    drive.throttle = -0.2
+    drive_controller.throttle = -0.2
     sleep(0.5)
 
 if __name__ == "__main__":
     try:
         main()
-    except Exception as _:
-        drive.stop()
-    drive.stop()
+    except Exception as e:
+        print(e)
+    finally:
+        drive_controller.stop()
