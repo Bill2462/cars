@@ -9,7 +9,6 @@ drive_controller = Car()
 Kp = 0.5
 
 def draw_marker(img, marker_center):
-    # Write vertical line at the middle of the image
     cv2.line(img, (img.shape[1] // 2, 0), (img.shape[1] // 2, img.shape[0]), (0, 255, 0), 5)
 
     if marker_center is not None:
@@ -37,8 +36,8 @@ def main():
         
         error = (result[0] / frame.shape[1])*2 - 1
         turn_setting = Kp * error
-        turn_setting = max(-1, min(turn_setting, 1))
         drive_controller.steering = turn_setting
+
         print(error, turn_setting)
 
 if __name__ == '__main__':
@@ -48,4 +47,3 @@ if __name__ == '__main__':
         print(e)
     finally:
         drive_controller.stop()
-
