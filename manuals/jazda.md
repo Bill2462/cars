@@ -21,12 +21,27 @@ Wpisz hasło `jetson` i naciśnij enter.
 
 W vscode studio otwórz folder `/home/jetson/tasks/POZIOM TRUDNOŚCI` za pomocą remote explorer.
 
+Wybierz Remote Expler z menu po lewej. Dodaj nowe połączenie (przycisk + przy zakładce ssh)
+
+```
+ssh jetson@ADRES_IP
+```
+
+Odświerz listę połączeń (klikając na strzałkę). Połącz się  ze swoim auktiem (klikając na strzłkę w prawo przy adresie IP twojego autka), wpisz hasło jestson
+Jeżeli w lewym dolnym rogu widać SSH:ADRES_IP znaczy się jesteś połączony z autkiem.
+Jeżel środowisko pyta o platformę wybierz Linux. Wpisuj hasło zawsze kiedy poprosi.
+Wejdź do katalogu /home/jetson/tasks.
+Wybierz poziom trudnośći po przerz wejście do odpowiedniego katalogu.
+
 ## Zadania
 
+Zadanie 1.
 Napisz program w pythonie który sprawi że samochód pojedzie do przodu, skręci, i cofnie się do tyłu.
 
+Zadanie 2.
 Napisz program który umożliwi jazdę z korektą na niedoskonałości w kontroli kierunku jazdy.
 
+Zadanie 3.
 Napisz program w pythonie który umożliwi sterowaniem łazikiem za pomocą gamepada.
 
 ## Sterowanie samochodem
@@ -77,6 +92,7 @@ Zacznij od `offset = 0` i `gain = 1`.
 
 Najpierw ustaw offset tak aby samochód jechał prosto. Testuj jazdę na krótkich przejazdach zmieniając sukcesywnie wartość offsetu aż samoch»d pojedzie prosto przy `x=0`. Zmiana parametru `gain` nie jest potrzebna w tym zadaniu.
 
+Przed uruchomieniem autka pamiętaj aby stało ono na ziemi i miało przestrzeń do jazy. Bądź przygotowany na łapanie go, jeżeli program nie zadziała właściwie.
 Program jest uruchamiany komendą:
 
 ```
