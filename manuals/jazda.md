@@ -1,12 +1,15 @@
 ## Przed rozpoczęciem
 
-Zaloguj się do samochodzika przez konsolę ssh w terminalu i przejdź do folderu `tasks/hard` lub `tasks/simple`.
+Zaloguj się do samochodzika przez konsolę ssh w terminalu.
+```
+ssh jetson@ADRES_IP
+```
+
+Przejdź do folderu `tasks/hard` lub `tasks/simple`.
 
 `tasks/simple` zawiera szkielety programów które mają więcej uzupełnionych komponentów.
 
 ```
-ssh jetson@ADRES_IP
-
 # trudne zadania
 cd tasks/hard
 
