@@ -7,8 +7,8 @@ def main():
     telemetry = TelemetrySender()
     cam = CSICamera()
 
-    classifier = ImageClassifier('../../efficient_net_b2.trt')
-    class_labels = load_classes('../../imagenet_classes.txt')
+    classifier = ImageClassifier('../../efficient_net_b3.trt')
+    class_labels = load_classes('imagenet_classes.txt')
 
     while True:
         frame = cam.read()
