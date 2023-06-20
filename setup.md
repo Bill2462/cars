@@ -21,7 +21,7 @@ This is done only once. This section is for installing SDK and downloading the j
  - Starting from JetPack version 4.6.1, the pre-config window will pop up when programming the system with SDK Manager. Select manual setup and oem to runtime.
  - Wait until operations are complete.
 
-### Mdyfing the device tree
+### Modyfing the device tree
 
 This is done only once when new image is downloaded. This section is for modyfing device tree on the jetpack image so system detects microSD card.
 
