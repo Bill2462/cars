@@ -12,7 +12,7 @@ def load_camera_parameters(filepath):
     return cam_matrix, dist_coeff
 
 class CSICamera:
-    def __init__(self, capture_fps=21, capture_width=1280, capture_height=720,
+    def __init__(self, capture_fps=120, capture_width=1280, capture_height=720,
                  width=1280, height=720, camera_parameters_filepath=None):
         try:
             self.capture_fps = capture_fps
