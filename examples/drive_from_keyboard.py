@@ -5,22 +5,22 @@ import time
 drive_controller = Car()
 
 def main():
-    Keyboard = Keyboard()
-    Keyboard.start_listening()
+    keyboard = Keyboard()
+    keyboard.start_listening()
 
     while 1:
-        print(Keyboard.UP, Keyboard.DOWN, Keyboard.LEFT, Keyboard.RIGHT)
+        print(keyboard.UP, keyboard.DOWN, keyboard.LEFT, keyboard.RIGHT)
 
-        if Keyboard.UP:
+        if keyboard.UP:
             y = 0.2
-        elif Keyboard.DOWN:
+        elif keyboard.DOWN:
             y = -0.3
         else:
             y = 0
         
-        if Keyboard.LEFT:
+        if keyboard.LEFT:
             x = -0.3
-        elif Keyboard.RIGHT:
+        elif keyboard.RIGHT:
             x = 0.3
         else:
             x = 0
