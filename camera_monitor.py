@@ -1,16 +1,8 @@
 import time
-import sys
 import argparse
 import requests
-import select
 import matplotlib.pyplot as plt
 from PIL import Image
-
-def check_if_enter_pressed():
-    if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
-        sys.stdin.read(1)
-        return True
-    return False
 
 def get_image_or_panic(address):
     response = requests.get(address, stream=True)
@@ -64,9 +56,6 @@ def main():
         fig.canvas.draw()
         fig.canvas.flush_events()
         time.sleep(0.01) # To avoid 100% CPU utilization
-
-        if check_if_enter_pressed():
-            break
 
 if __name__ == "__main__":
     main()
