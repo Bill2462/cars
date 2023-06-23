@@ -61,7 +61,9 @@ Przejdź do zakładki `ctrl` i kliknij na `maxn` po czym wciśnij q aby wyjść.
 
 ## Formuła obliczenia błędu na podstawie pozycji markera
 
-$$ e(x) = \frac{2x}{width} - 1$$
+$$ 
+e(x) = \frac{2x}{width} - 1
+$$
 
  - $e(x)$ - Błąd
  - $x$ - Komponent X pozycji markera na obrazie.
@@ -70,7 +72,10 @@ $$ e(x) = \frac{2x}{width} - 1$$
 ## Kontroler proporcjonalny
 
 Wzór na sygnał sterowania:
-$$ y(e) = kp \cdot e$$
+
+$$ 
+y(e) = kp \cdot e
+$$
 
  - $y(e)$ - Sygnał sterowania do kierownicy,
  - $e$ - Błąd
