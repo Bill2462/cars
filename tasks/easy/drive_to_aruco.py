@@ -7,7 +7,7 @@ import cv2
 drive_controller = Car()
 drive_controller.steering_offset = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
-MARKER_ID = 0 # Identyfikator markeru który będziemy śledzić.
+MARKER_ID = 0 # Identyfikator markeru który będziemy śledzić. Jest na kartce z markerem.
 
 KP = 0.0 # Zysk kontrolera proporcjonalnego.
 # Ta zmienna kontroluje jak bardzo łazik będzie skręcał w stronę markeru.
