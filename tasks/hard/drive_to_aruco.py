@@ -38,7 +38,7 @@ def main():
         frame = cam.read()
 
         # Detekcja markerów. Zwrca X i Y środka markeru.
-        result = aruco_detector.detect_marker(frame, MARKER_ID)
+        result, width = aruco_detector.detect_marker(frame, MARKER_ID)
 
         # Narysuj marker na obrazie.
         frame = draw_marker(frame, result)

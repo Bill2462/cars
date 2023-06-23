@@ -28,6 +28,10 @@ Powoli zmieniaj wartość parametru steering_offset aż łazik zacznie jechać p
 
 # Zadanie 3
 
+Kontynuuj edycję kodu w pliku `driving.py` z zadania 2. Zaprogramuj prostą trasę dla łazika. Np jedź prosto, skręć w lewo, jedź prosto....
+
+# Zadanie 4
+
 Zadanie ma na celu implementację sterowania łazikiem za pomocą klawiatury albo pada.
 
 Szablon zadania znajduje się w pliku `control_from_pad.py` w przypadku gamepada i `control_from_keyboard.py` w przypadku klawiatury.
@@ -36,7 +40,7 @@ W wersji łatwej szablon zawiera więcej przykładowego kodu niż w wersji trudn
 
 Dodatkowe informacje znajdują się w komentarzach w kodzie.
 
-# Zadanie 4
+# Zadanie 5
 
 Zadanie ma na celu implementacje prostej pętli kontrolnej która będzie sprawiała, że łazik będzie jechał do markera wizyjnego.
 
@@ -59,6 +63,9 @@ jtop
 Przejdź do zakładki `ctrl` i kliknij na `maxn` po czym wciśnij q aby wyjść.
 
 
+Dla chętnych: Zaimplementuj pełny regulator PI albo PID.
+
+
 ## Formuła obliczenia błędu na podstawie pozycji markera
 
 $$ 
@@ -74,7 +81,7 @@ $$
 Wzór na sygnał sterowania:
 
 $$ 
-y(e) = kp \cdot e
+y(t) = kp \cdot e(t)
 $$
 
  - $y(e)$ - Sygnał sterowania do kierownicy,
@@ -83,8 +90,30 @@ $$
 
 Wartość $y(e)$ należy ustawić na steering. Wewnętrznie zostanie ona ograniczona do zakresu $[-1, 1]$ więc nie trzeba tego umieszczać w kodzie.
 
+## Kontroler całkujący
+
+Wzór na sygnał sterowania:
+
+$$ 
+I_r = I_{t-1} + K_c E \frac{T_S}{T_i}
+$$
+
+ - $I_r$ - Stan wyjścia kontrolera
+ - $I_{t-1}$ - Poprzedni stan wyjścia kontrolera
+ - $T_s$ - Czas próvkowania.
+ - $K_c$ - Wzmocnienie całkujące
+ - $E$ - Błąd
+ - $T_i$ - Czas całkowania (im większy tym wolniej kontroler będzie reagował na zmiany).
+
+Wartość $y(e)$ należy ustawić na steering. Wewnętrznie zostanie ona ograniczona do zakresu $[-1, 1]$ więc nie trzeba tego umieszczać w kodzie.
+
 ## Kalibracja pętli kontroli
 
 Należy postawić łazik na ziemi i umieścić marker na wprost nieco po lewej lub po prawej stronie od osi centralnej łazika. Następnie należy włączyć program kontrolny. Należy zacząć od małych wartości $kp$ i zwiększać je aż do momentu gdy łazik zacznie  jechać do celu.
 
+## Zadanie 6
 
+Kontynuuj edycję kodu z zadania 5. Zaprogramuj łazik tak aby jechał od markera do markera.
+
+Aby to zrobić zaprogramuj najpierw jazdę do jednego markera. Potem jak marker stanie się dostatecznie szeroki. Łazik powinien skręcić w prawo albo w lewo aż w polu widzenia znajdzie się następny marker. Po czym powinien pojechać do następnego
+markera i tak dalej aż do ostatniego markera.

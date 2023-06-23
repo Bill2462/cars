@@ -23,7 +23,7 @@ def main():
     while 1:
         frame = cam.read()
 
-        result = aruco_detector.detect_marker(frame)
+        result = aruco_detector.detect_marker(frame)[0]
         frame = draw_marker(frame, result)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         telemetry.log_image("img", frame)

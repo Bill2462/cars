@@ -13,8 +13,9 @@ class ArucoDetector:
             for i in range(len(ids)):
                 if ids[i] == marker_id:
                     marker_center = (corners[i][0][0] + corners[i][0][2]) / 2
-                    return marker_center
-        return None
+                    marker_width = corners[i][0][2][0] - corners[i][0][0][0]
+                    return marker_center, marker_width
+        return None, None
     
 
 
