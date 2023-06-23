@@ -3,8 +3,8 @@ from time import sleep
 
 drive_controller = Car()
 
-# Podczas kalibracji steering_offset zostaw oryginalny kod który jedzie do przodu i do tyłu i 
-# powoli zmieniaj ta wartość tak aby łazik jechał prosto.
+# Podczas kalibracji steering_offset użyj kodu w którym samochód jedzie przez np 1 sekundę do przodu gdzie steering = 0.0.
+# powoli zmieniaj wartość offsetu tak aby łazik jechał prosto. Zapisz tą wartość gdzieś bo będzie potrzebna w pozostałch zadaniach.
 drive_controller.steering_offset = 0.0 # Ustaw tą zmienną tak aby łazik jechał prosto.
 
 # Notatka: Jeśli łazik będzie cały czas kręcił kołami mimo, że program nie jest uruchomiony to zrestartuj kontroler silnika.
