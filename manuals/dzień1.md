@@ -48,22 +48,33 @@ W wersji trudniejszej należy napisać formułę obliczającą błąd na podstaw
 
 Na komputurze uruchom monitor kamery aby mieć podgląd na to czy marker jest poprawnie wykrywany.
 
+WAŻNE:
+
+Na autku włącz tryb MAXN (maksymalna moc obliczeniowa procesora). W konsoli ssh wpisz
+
+```
+jtop
+```
+
+Przejdź do zakładki `ctrl` i kliknij na `maxn` po czym wciśnij q aby wyjść.
+
+
 ## Formuła obliczenia błędu na podstawie pozycji markera
 
 $$ e(x) = \frac{2x}{width} - 1$$
 
- - $ e(x) $ - Błąd
- - $ x $ - Komponent X pozycji markera na obrazie.
- - $ width $ - Szerokość obrazu
+ - $e(x)$ - Błąd
+ - $x$ - Komponent X pozycji markera na obrazie.
+ - $width$ - Szerokość obrazu
 
 ## Kontroler proporcjonalny
 
 Wzór na sygnał sterowania:
 $$ y(e) = kp \cdot e$$
 
- - $ y(e) $ - Sygnał sterowania do kierownicy,
- - $ e $ - Błąd
- - $ kp $ - Wzmocnienie proporcjonalne
+ - $y(e)$ - Sygnał sterowania do kierownicy,
+ - $e$ - Błąd
+ - $kp$ - Wzmocnienie proporcjonalne
 
 Wartość $y(e)$ należy ustawić na steering. Wewnętrznie zostanie ona ograniczona do zakresu $[-1, 1]$ więc nie trzeba tego umieszczać w kodzie.
 
