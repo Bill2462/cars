@@ -29,6 +29,34 @@ Zadania na dzień 2:
  - `image_classifier.py` - Klasifikacja obrazów.
  - `drive_to_object.py` - Jazda do obiektu wykrytego przez YOLO.
 
+## Pobieranie repozytorium i przygotowanie środowiska conda
+
+Otwórz wiersz poleceń. Wykonaj:
+
+```
+git clone https://github.com/Bill2462/cars
+```
+
+Potem zainstaluj środowiska opisane w `env_windows.yaml` wykonując komendy:
+
+```
+cd cars/envs
+conda env create -f env_windows.yaml
+```
+
+## Łączenie się z autkiem przez ssh
+
+Otwórz command line prompt na windowsie i wpisz:
+
+```
+ssh jetson@ADRES_IP
+```
+
+Hasło to jetson. ADRES_IP to adres IP twojego autka np `192.168.5.108`. Jeśli komenda poprosi o potwierdzenie sygnatury to potwierdź ją.
+
+Jeśli wyskoczy błąd o zmianie identyfikacji to otwórz w dowolnym edytorze tekstu plik którego ścieżka znajduje się w komunikacie i usuń
+linijkę która zawiera adres IP samochodzika. Potem komenda powinna działać.
+
 ## Łączenie się z autkiem w vscode studio
 
 Otwórz vscode studio. Wybierz Remote Expler z menu po lewej. Dodaj nowe połączenie (przycisk + przy zakładce ssh)
@@ -43,16 +71,6 @@ Jeżel środowisko pyta o platformę wybierz Linux. Wpisuj hasło zawsze kiedy p
 Wejdź do katalogu /home/jetson/tasks. Wybierz poziom trudnośći po przerzez wejście do odpowiedniego katalogu.
 
 Teraz możesz edytować szablony zadań.
-
-## Łączenie się z autkiem przez ssh
-
-Otwórz command line prompt na windowsie i wpisz:
-
-```
-ssh jetson@ADRES_IP
-```
-
-Hasło to jetson. ADRES_IP to adres IP twojego autka np `192.168.5.108`.
 
 ## Uruchamianie zadań
 
