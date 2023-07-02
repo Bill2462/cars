@@ -70,18 +70,11 @@ Jeżeli w lewym dolnym rogu widać SSH:ADRES_IP znaczy się jesteś połączony 
 Jeżel środowisko pyta o platformę wybierz Linux. Wpisuj hasło zawsze kiedy poprosi.
 Wejdź do katalogu /home/jetson/tasks. Wybierz poziom trudnośći po przerzez wejście do odpowiedniego katalogu.
 
-Teraz możesz edytować szablony zadań.
+Teraz możesz skokpiować odpowiedni szablon zadania, które chcesz edytować i zacząć nad nim pracować.
 
 ## Uruchamianie zadań
 
-Zadania są uruchamiane z katalogu `tasks/POZIOM_TRUDNOŚCI` w folderze `/home/jetson`.
-
 Najpierw zaloguj się na autko przez ssh i przejdź do katalogu z zadaniem.
-
-```
-cd tasks/POZIOM_TRUDNOŚCI
-```
-
 Następnie uruchom zadanie.
 
 ```
