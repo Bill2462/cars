@@ -40,6 +40,8 @@ W wersji łatwej szablon zawiera więcej przykładowego kodu niż w wersji trudn
 
 Dodatkowe informacje znajdują się w komentarzach w kodzie.
 
+Dla chętnych: Zaimplementuj płynny skręcanie. To znaczy aby kod nie ustawiał od razu na maksymalną wartość steering tylko stopniowo zwiększał wartość steering do maksymalnej wartości.
+
 # Zadanie 5
 
 Zadanie ma na celu implementacje prostej pętli kontrolnej która będzie sprawiała, że łazik będzie jechał do markera wizyjnego.
