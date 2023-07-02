@@ -2,6 +2,9 @@ from car.drive import Car
 from car.pad import PadController
 import time
 
+# NOTATKA: Kod powinien być uruchomiony jako root.
+# Komenda to uruchomienia programu to: sudo python3 control_from_pad.py
+
 drive_controller = Car()
 drive_controller.steering_offset = 0.1 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
@@ -39,6 +42,7 @@ def main():
         drive_controller.steering = x
 
         # Co ile sekund mamy zaktualizować stan silników.
+        # To musi tu zostać bo inaczej mogą wystąpić problemy z komunikacją z kontrolerem PWM.
         time.sleep(0.1)
 
 if __name__ == "__main__":
