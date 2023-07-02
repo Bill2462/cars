@@ -87,6 +87,7 @@ Następnie uruchom zadanie.
 ```
 python3 NAZWA_ZADANIA.py
 ```
+Aby zakończyć wykonywanie kodu wciśnij ctrl+c.
 
 Zadanie dotyczące gamepada i klawiatury wymaga uruchomienia jako administrator (root). Komenda w przypadku tych zadań to
 
@@ -95,8 +96,6 @@ sudo python3 NAZWA_ZADANIA.py
 ```
 
 Podaj hasło jestson i naciśnij enter.
-
-Aby zakończyć zadanie naciśnij ctrl+c. 
 
 ## Aktywacja środowiska conda
 
@@ -120,3 +119,8 @@ ADRES_IP to adres IP twojego autka.
 
 Notatka: Program na autko który zwraca obraz z kamery musi być uruchomiony przed wykonaniem tego skryptu.
 
+
+
+$$
+y = g(x)
+$$
