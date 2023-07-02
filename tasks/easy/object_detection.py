@@ -43,8 +43,10 @@ def main():
 
         telemetry.log_image("img", frame)
         
-        # Zaimplementuj wykrywanie butelki i sterowanie samochodem tak aby jechał do butelki.
-        # Podpowiedź: Wykrywanie jest wolne. Zaimplementuj zatrzymanie się samochodu na 1.5 sekundy i ewaluację pozycji butelki.
+        # Zaimplementuj wykrywanie butelki i sterowanie samochodem tak aby jechał do dowolnego obiektu w sali.
+        # Podpowiedź 1: Wykrywanie jest wolne. Zaimplementuj zatrzymanie się samochodu na 1.5 sekundy i ewaluację pozycji obiektu.
+        # Podpowiedź 2: Zacznij od wyświetlenia surowych wyników w detetions. Zobacz jakie informacje są dostępne. Potem zaimplementuj wybór obiektu po nazwie.
+        # Podpowiedź 3: Ramka jest zdefiniowana w taki sposób że koordynatę X jej środka można uzyskać za pomocą object[2][0].
     
 if __name__ == '__main__':
     try:
