@@ -1,5 +1,5 @@
 from car.drive import Car
-from time import sleep
+import time
 
 drive_controller = Car()
 
@@ -14,15 +14,15 @@ def main():
     # Jedź prosto przez 1 sekundę.
     drive_controller.steering = 0.0
     drive_controller.throttle = 0.25
-    sleep(1)
+    timw.sleep(1)
 
     # Zatrzymaj się.
     drive_controller.throttle = 0.0
-    sleep(2) # Zaczekaj 2 sekundy aby samoochód zatrzymał się.
+    timw.sleep(2) # Zaczekaj 2 sekundy aby samoochód zatrzymał się.
 
     # Jedź do przodu przez 1 sekundę.
     drive_controller.throttle = -0.2
-    sleep(1.0)
+    timw.sleep(1.0)
 
     # Skręcanie
     # Aby skręcić w lewo ustaw wartość sterowania na wartość ujemną.

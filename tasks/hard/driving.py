@@ -1,5 +1,5 @@
 from car.drive import Car
-from time import sleep
+import time
 
 drive_controller = Car()
 
@@ -23,7 +23,7 @@ drive_controller.steering_offset = 0.0
 # drive_controller.steering = 1.0 # MAX w prawo
 
 # Opóźnienie
-# sleep(1.0) # Czekaj 1 sekundę
+# time.sleep(1.0) # Czekaj 1 sekundę
 
 def main():
     # Kod do jazdy.
