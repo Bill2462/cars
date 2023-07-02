@@ -9,7 +9,10 @@ def resize_and_crop(img):
     return img
 
 def preprocess_image(img):
+    mean = np.array([0.485, 0.456, 0.406]).astype(np.float32)
+    stddev = np.array([0.229, 0.224, 0.225]).astype(np.float32)
     # Zaimplementuj kod do normalizacji obrazu.
+    
     return np.moveaxis(data, 2, 0).astype(np.float16) # Switch from HWC to to CHW order
 
 def main():
