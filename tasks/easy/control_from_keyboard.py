@@ -7,7 +7,7 @@ import time
 # NOTATKA2: Aby wyłączyć ten program wciśnij ctrl + c dwa razy.
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0;0
 
 def main():
 
@@ -34,7 +34,7 @@ def main():
         # Przykładowy kod który ustawia napęd i kierunek w zależności od stanu zmiennej y i x. 
         # x i y muszą być zmiennymi typu float i muszą być stworzone wcześniej.
         drive_controller.throttle = y
-        drive_controller.steering = x
+        drive_controller.steering = x + STEERING_OFFSET
 
         # Co ile sekund mamy zaktualizować stan silników.
         # To musi tu zostać bo inaczej mogą wystąpić problemy z komunikacją z kontrolerem PWM.

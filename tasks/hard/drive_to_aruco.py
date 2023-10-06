@@ -5,7 +5,7 @@ from car.drive import Car
 import cv2
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
 MARKER_ID = 0 # Identyfikator markeru który będziemy śledzić.
 
@@ -49,7 +49,9 @@ def main():
 
         # Zaimplementuj formułę do liczenia błędu i kontroler pojemnościowy.
         # Jeśli result będzie None to powinniśmy wyłączyć silniki ustawiając throttle na 0.0.
-        
+        if result is None:
+            continue
+
         frame_width = frame.shape[1]
         marker_center_x = result[0]
 

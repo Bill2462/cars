@@ -5,7 +5,7 @@ from car.drive import Car
 import cv2
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
 MARKER_ID = 0 # Identyfikator markeru który będziemy śledzić. Jest na kartce z markerem.
 
@@ -63,7 +63,7 @@ def main():
         turn_setting = KP * error
 
         # Ustaw sterowania
-        drive_controller.steering = turn_setting
+        drive_controller.steering = turn_setting + STEERING_OFFSET
         
         # Wyświetl błąd i ustawienie sterowania.
         print(error, turn_setting)

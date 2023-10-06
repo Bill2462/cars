@@ -6,7 +6,7 @@ import time
 # Komenda to uruchomienia programu to: sudo python3 control_from_pad.py
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.1 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0.1 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
 # Obiekt gamepad będzie nasłuchiwał wydarzeń z kontrolera gier i zwracał kontrolek.
 gamepad = PadController()
@@ -39,7 +39,7 @@ def main():
         # x i y muszą być zmiennymi typu float i muszą być stworzone wcześniej.
 
         drive_controller.throttle = 0.0 # UWAGA; nie dawaj tutaj surowej wartości y bo łazik pojedzie bardzo szybko.
-        drive_controller.steering = x
+        drive_controller.steering = x + STEERING_OFFSET
 
         # Co ile sekund mamy zaktualizować stan silników.
         # To musi tu zostać bo inaczej mogą wystąpić problemy z komunikacją z kontrolerem PWM.

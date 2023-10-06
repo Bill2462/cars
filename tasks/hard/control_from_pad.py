@@ -6,7 +6,7 @@ import time
 # Komenda to uruchomienia programu to: sudo python3 control_from_pad.py
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.1 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0.1 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
 # Obiekt gamepad będzie nasłuchiwał wydarzeń z kontrolera gier i zwracał kontrolek.
 gamepad = PadController()

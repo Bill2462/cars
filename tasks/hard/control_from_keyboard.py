@@ -7,7 +7,7 @@ import time
 # NOTATKA2: Aby wyłączyć ten program wciśnij ctrl + c dwa razy.
 
 drive_controller = Car()
-drive_controller.steering_offset = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
+STEERING_OFFSET = 0.0 # Ustaw tutaj wartość offsetu sterowania ustaloną w zadaniu z podstawami sterowania.
 
 def main():
 
