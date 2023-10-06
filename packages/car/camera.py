@@ -1,6 +1,8 @@
+import time
 import cv2
 import json
 import vpi
+import threading
 import numpy as np
 
 def load_camera_parameters(filepath):
@@ -71,3 +73,23 @@ class CSICamera:
             return self._correct_image(image)
 
         return image
+
+class NonBlockingCamera:
+    def __init__(self, capture_fps=120, capture_width=1280, capture_height=720,
+                 width=1280, height=720, camera_parameters_filepath=None):
+
+        self.camera = CSICamera(capture_fps, capture_width, capture_height, width, height, camera_parameters_filepath)
+        self.frame = None
+
+    def _capture(self, event):
+        self.frame = self.camera.read()
+        
+    def start(self):
+        def wrapper():
+            self._capture()
+        
+        self.thread = threading.Thread(target=wrapper)
+        self.thread.start()
+
+        time.sleep(0.5)
+

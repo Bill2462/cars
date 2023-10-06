@@ -1,4 +1,4 @@
-from car.drive import Car
+from car.drive import Car, NonBlockingCamera
 from car.keyboard import Keyboard
 import time
 

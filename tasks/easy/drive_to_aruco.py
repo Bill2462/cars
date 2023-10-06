@@ -1,4 +1,4 @@
-from car.camera import CSICamera
+from car.camera import CSICamera, NonBlockingCamera
 from car.telemetry import TelemetrySender
 from car.marker_detector import ArucoDetector
 from car.drive import Car
@@ -32,7 +32,7 @@ def draw_marker(img, marker_center):
 def main():
     telemetry = TelemetrySender()
     aruco_detector = ArucoDetector()
-    cam = CSICamera()
+    cam = CSICamera() # Jeśli jest problem z opóźnieniem możesz spróbować użyć NonBlockingCamera zmiast CSICamera. Zakomentuj linijkę powyżej
 
     while 1:
         frame = cam.read()

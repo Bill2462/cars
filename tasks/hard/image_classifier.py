@@ -1,4 +1,4 @@
-from car.camera import CSICamera
+from car.camera import CSICamera, NonBlockingCamera
 from car.telemetry import TelemetrySender
 from car.image_classifier import ImageClassifier, load_classes
 import cv2
@@ -21,7 +21,7 @@ def preprocess_image(img):
 
 def main():
     telemetry = TelemetrySender()
-    cam = CSICamera()
+    cam = CSICamera() # Jeśli jest problem z opóźnieniem możesz spróbować użyć NonBlockingCamera zmiast CSICamera. Zakomentuj linijkę powyżej
     
     # Załaduj model siecu neuronowego zoptymalizowany przez TensorRT.
     classifier = ImageClassifier('/home/jetson/tasks/efficient_net_b3.trt')

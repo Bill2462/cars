@@ -1,4 +1,4 @@
-from car.camera import CSICamera
+from car.camera import CSICamera, NonBlockingCamera
 from car.telemetry import TelemetrySender
 from car import darknet
 from car.drive import Car
@@ -18,7 +18,7 @@ def resize_and_crop(img):
 
 def main():
     telemetry = TelemetrySender()
-    cam = CSICamera()
+    cam = CSICamera() # Jeśli jest problem z opóźnieniem możesz spróbować użyć NonBlockingCamera zmiast CSICamera. Zakomentuj linijkę powyżej
 
     network, class_names, class_colors = darknet.load_network(
             "../../yolo_bin/yolov4-tiny.cfg",
