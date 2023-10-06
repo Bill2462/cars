@@ -1,7 +1,11 @@
 from car.camera import CSICamera
 from car.telemetry import TelemetrySender
-from car.dnn import ImageClassifier, load_classes
+from car.image_classifier import ImageClassifier, load_classes
 import cv2
+
+# Inferecjna sieci neuronowej.
+# logits = classifier.inference(frame)
+
 
 def resize_and_crop(img):
     img = cv2.resize(img, (398, 224))
