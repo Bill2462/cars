@@ -1,6 +1,6 @@
 from car.camera import CSICamera
 from car.telemetry import TelemetrySender
-from car.dnn import ImageClassifier, preprocess_image, resize_and_crop, load_classes, softmax, get_top_k
+from car.image_classifier import ImageClassifier, preprocess_image, resize_and_crop, load_classes, softmax, get_top_k
 import cv2
 
 def main():
